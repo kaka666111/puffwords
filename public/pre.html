@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUFFWORDS</title>
+    <link rel="stylesheet" href="/css/pre.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>🎮 PUFFWORDS 🎮</h1>
+
+    <div id="data-container"></div>
+
+<!-- 修改后的登录容器 -->
+<div class="container login-container" id="loginContainer">
+    <h2>登录玩家</h2>
+    <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="用户名">
+        <input type="password" id="loginPassword" placeholder="密码">
+        <button type="submit">登录</button>
+    </form>
+    <div class="switch-footer"> <!-- 新增底部容器 -->
+        <button type="button" id="showRegisterBtn" class="switch-btn">
+            <span>🎮 没有账号？</span>
+            <strong>立即注册 →</strong>
+        </button>
+    </div>
+</div>
+
+<!-- 修改后的注册容器 -->
+<div class="container register-container" id="registerContainer" style="display: none;">
+    <h2>创建玩家</h2>
+    <form id="registerForm">
+        <input type="text" id="username" placeholder="输入用户名">
+        <input type="password" id="password" placeholder="输入密码">
+        <button type="submit">创建玩家</button>
+    </form>
+    <div class="switch-footer">
+        <button type="button" id="showLoginBtn" class="switch-btn">
+            <span>🔑 已有账号？</span>
+            <strong>马上登录 →</strong>
+        </button>
+    </div>
+</div>
+
+    <script type="module" src="/js/pre.js"></script>
+    <script>
+        const loginContainer = document.getElementById('loginContainer');
+        const registerContainer = document.getElementById('registerContainer');
+        const showRegisterBtn = document.getElementById('showRegisterBtn');
+        const showLoginBtn = document.getElementById('showLoginBtn');
+
+        showRegisterBtn.addEventListener('click', () => {
+            loginContainer.style.display = 'none';
+            registerContainer.style.display = 'block';
+        });
+
+        showLoginBtn.addEventListener('click', () => {
+            registerContainer.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
+

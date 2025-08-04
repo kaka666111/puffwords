@@ -1,0 +1,287 @@
+/* 通用设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', system-ui, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 背景动画装饰 */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200vw;
+    height: 200vh;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(52, 152, 219, 0.05) 0px,
+        rgba(52, 152, 219, 0.05) 40px,
+        transparent 40px,
+        transparent 80px
+    );
+    z-index: -1;
+    animation: bgMove 30s linear infinite;
+}
+
+@keyframes bgMove {
+    from { transform: translate(-50%, -50%) rotate(45deg); }
+    to { transform: translate(0%, 0%) rotate(45deg); }
+}
+
+/* 标题样式 */
+h1 {
+    color: #2c3e50;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+/* 容器样式（登录/创建） */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 450px;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+
+/* 标题小标题样式 */
+h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #3498db, transparent);
+}
+
+/* 输入框样式 */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    background: rgba(52, 152, 219, 0.05);
+    transition: all 0.3s;
+}
+
+input:focus {
+    background: white;
+    box-shadow: 0 0 0 2px #3498db;
+    outline: none;
+}
+
+/* 按钮样式 */
+button {
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1.5rem;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    animation: btnGlow 1.5s infinite;
+}
+
+@keyframes btnGlow {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+button:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .container {
+        padding: 2rem;
+    }
+}
+
+/* 新增CSS */
+.container {
+    padding-bottom: 80px; /* 给底部按钮预留空间 */
+    position: relative; /* 为底部定位提供参考 */
+}
+
+.switch-footer {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    left: 25px; /* 防止右侧溢出 */
+    display: flex;
+    justify-content: flex-end; /* 右对齐 */
+    margin-top: 20px; /* 与表单保持距离 */
+}
+
+.switch-btn {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    border-radius: 12px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.switch-btn span {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.switch-btn strong {
+    color: #2ecc71;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+/* 悬停效果 */
+.switch-btn:hover {
+    transform: translateX(5px);
+    border-color: #3498db;
+    box-shadow: 0 5px 15px rgba(52,152,219,0.15);
+}
+
+.switch-btn:hover strong {
+    color: #3498db;
+}
+
+/* 移动端适配 */
+@media (max-width: 480px) {
+    .container {
+        padding-bottom: 70px;
+    }
+    
+    .switch-footer {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+    }
+    
+    .switch-btn {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px;
+    }
+    
+    .switch-btn span {
+        font-size: 0.9rem;
+    }
+}
+
+/* 修改CSS部分 */
+/* 移除注册容器的特殊高度 */
+.register-container {
+    /* 移除原min-height: 500px */
+}
+
+/* 统一容器高度 */
+.container {
+    min-height: 420px; /* 新增统一最小高度 */
+    padding-bottom: 80px; 
+    position: relative;
+}
+
+/* 优化按钮定位 */
+.switch-footer {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    left: auto; /* 取消左侧约束 */
+    width: auto; /* 根据内容自适应 */
+    margin-top: 0;
+    display: block; /* 改为块级元素 */
+}
+
+/* 按钮样式微调 */
+.switch-btn {
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(52, 152, 219, 0.25);
+    padding: 12px 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switch-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 24px rgba(52,152,219,0.15);
+}
+
+/* 移动端适配 */
+@media (max-width: 480px) {
+    .container {
+        min-height: 380px;
+        padding-bottom: 70px;
+    }
+    
+    .switch-footer {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .switch-btn {
+        width: max-content;
+        max-width: calc(100% - 40px);
+    }
+}

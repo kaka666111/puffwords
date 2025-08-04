@@ -1,0 +1,990 @@
+/* style.css */
+:root {
+    --main-color: #4CAF50;
+    --main-hover: #45a049;
+    --accent-color: #3498db;
+    --accent-hover: #2980b9;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --success-color: #27ae60;
+    --text-dark: #2c3e50;
+    --text-light: #f8f9fa;
+    --text-muted: #7f8c8d;
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.2);
+    --box-shadow-inset: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    --border-radius: 1.2rem;
+    --border-radius-sm: 0.8rem;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --glow-effect: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+    transition: var(--transition);
+    padding: 20px;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.game-container {
+    max-width: 1200px;
+    width: 95%;
+    min-height: 80vh;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: row; /* 水平布局 */
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color), var(--warning-color), var(--danger-color), var(--success-color));
+    z-index: 1;
+}
+
+.left-panel {
+    width: 35%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.left-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(76, 175, 80, 0.3), transparent);
+    z-index: 0;
+}
+
+.right-panel {
+    width: 65%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    background: rgba(76, 175, 80, 0.08);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--box-shadow-inset);
+}
+
+.chinese-meaning {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+    text-align: center;
+    padding: 15px;
+    border-radius: var(--border-radius-sm);
+    background: rgba(76, 175, 80, 0.05);
+    box-shadow: var(--box-shadow-inset);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chinese-meaning::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--main-color), transparent);
+}
+
+.score {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.score::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--main-color), transparent);
+    border-radius: 2px;
+}
+
+#score {
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+#score::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--main-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+#score:hover::after {
+    transform: scaleX(1);
+}
+
+.game-area {
+    position: relative;
+    flex: 1;
+    min-height: 500px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: var(--border-radius);
+    border: 3px solid var(--main-color);
+    margin: 15px 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+    transition: var(--transition);
+}
+
+.game-area:hover {
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+    transform: translateY(-2px);
+}
+
+#bubbles-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    animation: float 3s infinite alternate ease-in-out;
+    color: var(--text-dark);
+}
+
+/* 泡泡颜色方案 */
+.bubble:nth-child(5n+1) {
+    background: linear-gradient(145deg, #ffcdd2, #f8bbd0);
+    border: 2px solid rgba(244, 143, 177, 0.7);
+}
+
+.bubble:nth-child(5n+2) {
+    background: linear-gradient(145deg, #bbdefb, #b3e5fc);
+    border: 2px solid rgba(79, 195, 247, 0.7);
+}
+
+.bubble:nth-child(5n+3) {
+    background: linear-gradient(145deg, #c8e6c9, #dcedc8);
+    border: 2px solid rgba(156, 204, 101, 0.7);
+}
+
+.bubble:nth-child(5n+4) {
+    background: linear-gradient(145deg, #fff9c4, #ffecb3);
+    border: 2px solid rgba(255, 202, 40, 0.7);
+}
+
+.bubble:nth-child(5n) {
+    background: linear-gradient(145deg, #d1c4e9, #b2ebf2);
+    border: 2px solid rgba(121, 134, 203, 0.7);
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+
+.bubble:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.1);
+    color: var(--text-dark);
+    z-index: 2;
+}
+
+.bubble:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    padding: 15px 0;
+    margin-top: auto;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    background: linear-gradient(135deg, var(--main-color), var(--main-hover));
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 140px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(30deg);
+    transition: 0.6s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+button:hover::after {
+    left: 120%;
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
+}
+
+.message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.message-content {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    padding: 2.5rem 3rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.4s ease-out;
+    position: relative;
+    max-width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.message-content::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.15) 50%, transparent 75%);
+    animation: shine 3.5s infinite;
+}
+
+.message-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 1.5rem 0;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.3);
+}
+
+.success-message .message-text {
+    color: #27ae60;
+}
+
+.message-emoji {
+    font-size: 4.5rem;
+    margin: 1.5rem 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.message-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 0.8rem;
+    background: linear-gradient(135deg, var(--main-color), var(--main-hover));
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1.5rem;
+}
+
+.message-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* 修改进度条容器样式 */
+.progress-bar {
+    width: 100%;
+    height: 14px; /* 加高进度条 */
+    background: rgba(0,0,0,0.08);
+    border-radius: 8px; /* 更大的圆角 */
+    margin: 2rem 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加立体阴影 */
+}
+
+/* 修改进度条填充样式 */
+.progress-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--main-color) 0%,
+        var(--main-hover) 50%,
+        var(--main-color) 100%
+    ); /* 对称渐变 */
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 更顺滑的动画曲线 */
+    border-radius: 8px;
+    position: relative;
+}
+
+/* 添加流动光效 */
+.progress-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.3) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    animation: flow 2s infinite;
+}
+
+@keyframes flow {
+    0% { left: -100%; }
+    100% { left: 140%; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8) rotate(-3deg); opacity: 0; }
+    80% { transform: scale(1.05) rotate(1deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.level-tip {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fffae6;
+    border: 2px solid #ffcc00;
+    padding: 8px 16px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border-radius: 12px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: block;
+    animation: fadeOut 3s forwards;
+}
+
+.countdown {
+    color: #0ebc7f;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 8px;
+    animation: pulse 1s infinite;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    overflow-y: auto; /* 允许内容滚动 */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto;
+    box-shadow: var(--box-shadow);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.input-group {
+    margin: 10px 0;
+}
+
+.wow-image {
+    background-color: transparent;
+    width: 60%;
+    height: auto;
+}
+
+.shuffle-button {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--main-color);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--main-color);
+    transition: var(--transition);
+}
+
+.shuffle-button:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.reward-container {
+    margin: 20px auto;
+    display: none;
+    z-index: 1000;
+    text-align: center;
+}
+
+.reward-container img {
+    width: 200px;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 0 auto;
+}
+
+.hint-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.hint-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    animation: popIn 0.3s ease-out;
+}
+
+.hint-content button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.level-tip {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fffae6;
+    border: 2px solid #ffcc00;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    border-radius: 12px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.reward-popup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background: white;
+    border: 3px solid #ffa500;
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 1001;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.reward-popup img {
+    width: 150px;
+    height: auto;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* 控制自定义单词按钮的显示/隐藏 */
+#customWordsBtn {
+    display: none; /* 默认隐藏 */
+}
+
+/* 当在自定义模式时显示按钮 */
+.custom-mode #customWordsBtn {
+    display: block;
+}
+
+/* 调整控制按钮的布局 */
+.controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    padding: 15px 0;
+    margin-top: auto;
+}
+
+/* 当只有一个按钮时居中显示 */
+.controls:has(button:only-child) {
+    justify-content: center;
+}
+
+/* 文件导入区域样式 */
+#fileInput {
+    display: none;
+}
+
+#importWordsBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#importWordsBtn:hover {
+    background-color: #45a049;
+}
+
+#fileName {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 确保自定义模式按钮只在自定义模式下显示 */
+#submitCustomWords {
+     /* 默认在模态框中的样式保持不变 */
+     margin-top: 15px;
+}
+
+.custom-mode #submitCustomWords {
+    display: inline-block;
+}
+
+/* 隐藏游戏主界面中可能存在的额外确定按钮 */
+.game-container > #submitCustomWords {
+    display: none !important;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+/* 输入组样式 */
+.modal-content .input-group {
+    margin-bottom: 20px;
+}
+
+.modal-content .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* 单词数量输入框 */
+#wordCount {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#wordCount:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* 文件导入区域 */
+#importWordsBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+#importWordsBtn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+#fileName {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 单词输入区域 */
+#wordInputs {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 15px 0;
+    margin: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+#wordInputs .input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+#wordInputs .chinese-input,
+#wordInputs .english-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#wordInputs .chinese-input:focus,
+#wordInputs .english-input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* 确定按钮 */
+#submitCustomWords {
+    width: 100%;
+    padding: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+#submitCustomWords:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动条样式 */
+#wordInputs::-webkit-scrollbar {
+    width: 8px;
+}
+
+#wordInputs::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+#wordInputs::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc;
+}
+
+/* ===== 绝对有效的导入按钮位置调整 ===== */
+
+/* 1. 首先确保模态框内容有足够空间 */
+.modal-content {
+    position: relative;
+    padding-top: 70px; /* 为标题区域留出更多空间 */
+  }
+  
+  /* 2. 将标题和按钮放在同一行 */
+  .modal-content h2 {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    margin: 0;
+    line-height: 40px; /* 保持与按钮同高 */
+  }
+  
+  /* 3. 定位导入按钮到标题右侧 */
+  #importWordsBtn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    margin: 0;
+    height: 40px;
+  }
+  
+  /* 4. 定位文件名显示 */
+  #fileName {
+    position: absolute;
+    top: 65px; /* 在按钮下方 */
+    right: 30px;
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  /* 5. 调整单词数量输入框位置 */
+  #wordCount {
+    margin-top: 50px; /* 下移避开标题区域 */
+  }
+
+/* 添加搜索区域样式 */
+.search-section {
+    margin: 50px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .game-container {
+        flex-direction: column;
+    }
+    
+    .left-panel, .right-panel {
+        width: 100%;
+    }
+    
+    .left-panel {
+        border-right: none;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 20px;
+    }
+    
+    .chinese-meaning {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .reward-container img {
+        width: 150px;
+    }
+}
+
+#wordSearch {
+    width: 70%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#searchWordBtn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-results {
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
+.search-result-item .add-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.search-result-item .add-btn:hover {
+    background-color: #45a049;
+}
+
+/* 返回按钮样式 */
+.back-btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    padding: 8px 15px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: #495057;
+    z-index: 1000; /* 确保按钮在最上层 */
+}
+
+.back-btn:hover {
+    background: #e9ecef;
+    transform: translateX(-3px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 调整标题位置避免重叠 */
+.modal-content h2 {
+    margin-top: 50px; /* 根据按钮高度调整 */
+    text-align: center;
+}
+
+
+

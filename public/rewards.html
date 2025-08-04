@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>奖励中心</title>
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/rewards.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎁 奖励中心</h1>
+        
+        <!-- 积分显示和抽奖按钮区 - 只在这里定义一次 -->
+        <div class="top-section">
+            <div class="points-display">
+                <div>总得分: <span id="total-score">计算中...</span></div>
+                <div>可用积分: <span id="current-points">计算中...</span></div>
+                <small>(可用积分 = 总得分 - 已使用积分)</small>
+            </div>
+            <div class="draw-reward-section">
+                <button id="draw-reward-btn">🎉 消耗50分抽奖一次</button>
+                <div id="draw-result"></div>
+            </div>
+        </div>
+        
+        <!-- 奖励列表容器 -->
+        <div id="rewards-container"></div>
+        
+        <button id="return-home-btn" class="nav-button">返回主页</button>
+    </div>
+    
+    <script src="/js/rewards.js"></script>
+</body>
+</html>

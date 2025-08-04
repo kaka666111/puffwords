@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 左侧面板：单词和图片 -->
+        <div class="left-panel">
+            <div class="chinese-meaning"></div>
+            
+            <!-- 奖励图片展示（默认隐藏） -->
+            <div id="rewardContainer" class="reward-container">
+                <img id="rewardImage" src="" alt="奖励图片">
+            </div>
+            
+            <div class="header">
+                <div class="score">得分：<span id="score">0</span></div>
+                <div class="level">关卡：<span id="progressDisplay">1</span></div>
+            </div>
+            
+            <div class="controls">
+                <button id="customWordsBtn">自定义单词</button>
+                <button id="startGameBtn">重新开始</button>
+            </div>
+        </div>
+        
+        <!-- 右侧面板：游戏区域 -->
+        <div class="right-panel">
+            <div id="levelTip" class="level-tip">第1关</div>
+            
+            <div class="game-area">
+                <div id="bubbles-container"></div>
+            </div>
+        </div>
+
+        <div id="message" class="message">
+            <div class="message-content">
+                <div class="message-text"></div>
+                <div class="message-emoji"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customWordsModal" class="modal">
+        <div class="modal-content">
+            <!-- 新增返回按钮 -->
+            <button id="backToHomeBtn" class="back-btn">← 返回首页</button>
+            <h2>自定义单词</h2>
+            <div class="search-section">
+                <input type="text" id="wordSearch" placeholder="搜索单词...">
+                <button id="searchWordBtn">搜索</button>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            <div class="input-group">
+                <label>单词数量：</label>
+                <input type="number" id="wordCount" min="1" max="20">
+            </div>
+             <!-- 添加导入文件按钮 -->
+        <div class="input-group">
+            <button id="importWordsBtn">导入文本文件</button>
+            <input type="file" id="fileInput" accept=".txt,.csv" style="display:none">
+            <span id="fileName"></span>
+        </div>
+        <div id="wordInputs"></div>
+        <button id="submitCustomWords">确定</button>
+        </div>
+    </div>
+    <style>
+        .bubble {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 1.2rem !important;
+        }
+        
+        @media (max-width: 900px) {
+            .bubble {
+                width: 35px !important;
+                height: 35px !important;
+                font-size: 1.1rem !important;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .bubble {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 1rem !important;
+            }
+        }
+        </style>
+    <script src="/js/words.js"></script>
+    <script src="/js/game.js"></script>
+</body>
+</html>

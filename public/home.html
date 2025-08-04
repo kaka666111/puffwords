@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <div id="user-info">
+            <span id="username"></span>
+            <span id="progress"></span>
+        </div>
+        <button id="wrong-words-btn" class="menu-btn">
+          错词本
+          <span id="wrong-words-badge" class="badge" style="display:none;">0</span>
+      </button>
+        <button id="reward-btn">
+          <img id="reward-img" src="/img/default.png" alt="当前奖励徽章" loading="lazy">
+        </button>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="container">
+        <h1>选择游戏模式</h1>
+        
+        <!-- 游戏模式选择 -->
+        <div id="game-modes" role="group" aria-label="游戏模式选择">
+          <button class="mode-btn" data-mode="easy" aria-describedby="easy-desc">
+              <span class="mode-title">初中</span>
+              <span class="mode-desc" id="easy-desc">基础词汇</span>
+          </button>
+          <button class="mode-btn" data-mode="normal" aria-describedby="normal-desc">
+            <span class="mode-title">高中</span>
+            <span class="mode-desc" id="easy-desc">进阶词汇</span>
+        </button>
+        <button class="mode-btn" data-mode="hard" aria-describedby="hard-desc">
+          <span class="mode-title">四级</span>
+          <span class="mode-desc" id="easy-desc">大学水平</span>
+      </button>
+      <button class="mode-btn" data-mode="expert" aria-describedby="expert-desc">
+        <span class="mode-title">六级</span>
+        <span class="mode-desc" id="easy-desc">高级词汇</span>
+      </button> 
+      <button class="mode-btn" data-mode="legend" aria-describedby="legend-desc">
+        <span class="mode-title">雅思</span>
+        <span class="mode-desc" id="easy-desc">专业词汇</span>
+      </button>
+            <button id="custom-mode-btn" class="mode-btn">
+                <span class="mode-title">自定义</span>
+                <span class="mode-desc">自选单词</span>
+            </button>
+        </div>
+        
+        <button id="logout-btn" class="logout-btn" aria-label="退出登录">
+          安全退出
+      </button>
+    
+    </div>
+    
+    <script src="/js/home.js"></script>
+</body>
+</html>
