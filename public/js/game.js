@@ -40,7 +40,7 @@ async function searchWordImage(word) {
       // 1. 先尝试从Unsplash获取图片
       const unsplashResponse = await fetch(`https://api.unsplash.com/search/photos?query=${word}&per_page=1`, {
         headers: {
-          Authorization: '' // 替换为你的真实Key
+          Authorization: ' ' // 替换为你的真实Key
         }
       });
       
