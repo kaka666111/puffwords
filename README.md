@@ -17,6 +17,7 @@
 | HTML + CSS + JS | Node.js + Express | MySQL + Flyway | dotenv / axios / jwt / bcrypt |
 ---
 ##  项目结构
+```
 GAME-SERVER/
 ├── flyway/
 │   ├── flyway.conf
@@ -63,7 +64,7 @@ GAME-SERVER/
 ├── package-lock.json
 ├── package.json
 └── README.md
-
+```
 ---
 ##  启动方式
 ###  1. 克隆项目
